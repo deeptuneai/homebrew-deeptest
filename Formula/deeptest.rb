@@ -130,10 +130,22 @@ class Deeptest < Formula
     end
   
     def install
-        python3 = Formula["python@3.11"].opt_bin/"python3.11"
-        virtualenv_create(libexec, python3)
-        virtualenv_install_with_resources
+        # Create virtualenv with specific Python version
+        venv = virtualenv_create(libexec, "python3.11")
+        
+        # Upgrade pip first
+        venv.pip_install "pip"
+        
+        # Install all dependencies
+        venv.pip_install resources
+        
+        # Install the package itself
+        venv.pip_install_and_link buildpath
+        
+        # Verify the installation worked
+        system libexec/"bin/python", "-c", "import deeptest_cli"
     end
+
   
     test do
         system bin/"deeptest", "--version"
