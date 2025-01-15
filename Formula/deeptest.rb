@@ -1,12 +1,17 @@
 class Deeptest < Formula
     include Language::Python::Virtualenv
   
-    desc "Shiny new formula"
-    homepage "None"
-    url "https://files.pythonhosted.org/packages/d1/c6/7e84b3560b8df2950dbd445e16389495fc846a6e6eec628d7949bc45cbbf/deeptest_cli-0.0.3.tar.gz"
-    sha256 "397323a4ee2f6c90734f2b2a61b9fdf602dcea85ee9d11128a6cbbc2038353a0"
+    desc "Automated testing with deeptest!"
+    homepage "app.deeptest.sh"
+    url "https://files.pythonhosted.org/packages/28/3a/fb39f083dfb78679bd30424abffb70ce766f01220fcc7a2ddd1312383631/deeptest_cli-0.0.4.tar.gz"
+    sha256 "3482dd234cfbdbfad7f732d14f6fbebafa793ccec949e414b0ba3862a7451e93"
   
     depends_on "python3"
+  
+    resource "annotated-types" do
+      url "https://files.pythonhosted.org/packages/ee/67/531ea369ba64dcff5ec9c3402f9f51bf748cec26dde048a2f973a4eea7f5/annotated_types-0.7.0.tar.gz"
+      sha256 "aff07c09a53a08bc8cfccb9c85b05f1aa9a2a6f23728d790723543408344ce89"
+    end
   
     resource "certifi" do
       url "https://files.pythonhosted.org/packages/0f/bd/1d41ee578ce09523c81a15426705dd20969f5abf006d1afe8aeff0dd776a/certifi-2024.12.14.tar.gz"
@@ -63,9 +68,34 @@ class Deeptest < Formula
       sha256 "2cd7fad1009c31cc9fb6a035108509e6547547a7a738374f10bd49a09eb3ee3b"
     end
   
+    resource "pydantic" do
+      url "https://files.pythonhosted.org/packages/6a/c7/ca334c2ef6f2e046b1144fe4bb2a5da8a4c574e7f2ebf7e16b34a6a2fa92/pydantic-2.10.5.tar.gz"
+      sha256 "278b38dbbaec562011d659ee05f63346951b3a248a6f3642e1bc68894ea2b4ff"
+    end
+  
+    resource "pydantic-core" do
+      url "https://files.pythonhosted.org/packages/fc/01/f3e5ac5e7c25833db5eb555f7b7ab24cd6f8c322d3a3ad2d67a952dc0abc/pydantic_core-2.27.2.tar.gz"
+      sha256 "eb026e5a4c1fee05726072337ff51d1efb6f59090b7da90d30ea58625b1ffb39"
+    end
+  
+    resource "pyfiglet" do
+      url "https://files.pythonhosted.org/packages/a0/f2/2649b2acace54f861eccd4ab163bfd914236fc93ddb1df02dad2a2552b14/pyfiglet-1.0.2.tar.gz"
+      sha256 "758788018ab8faaddc0984e1ea05ff330d3c64be663c513cc1f105f6a3066dab"
+    end
+  
     resource "Pygments" do
       url "https://files.pythonhosted.org/packages/7c/2d/c3338d48ea6cc0feb8446d8e6937e1408088a72a39937982cc6111d17f84/pygments-2.19.1.tar.gz"
       sha256 "61c16d2a8576dc0649d9f39e089b5f02bcd27fba10d8fb4dcc28173f7a45151f"
+    end
+  
+    resource "python-dotenv" do
+      url "https://files.pythonhosted.org/packages/bc/57/e84d88dfe0aec03b7a2d4327012c1627ab5f03652216c63d49846d7a6c58/python-dotenv-1.0.1.tar.gz"
+      sha256 "e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca"
+    end
+  
+    resource "PyYAML" do
+      url "https://files.pythonhosted.org/packages/54/ed/79a089b6be93607fa5cdaedf301d7dfb23af5f25c398d5ead2525b063e17/pyyaml-6.0.2.tar.gz"
+      sha256 "d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e"
     end
   
     resource "requests" do
