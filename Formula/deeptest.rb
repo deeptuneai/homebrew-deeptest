@@ -3,7 +3,7 @@ class Deeptest < Formula
   
     desc "DeepTest CLI tool"
     homepage "https://github.com/deeptuneai/homebrew-deeptest"
-    url "https://github.com/deeptuneai/homebrew-deeptest/raw/main/releases/v0.0.3/deeptest-cli-0.0.3.tar.gz"
+    url "https://github.com/deeptuneai/homebrew-deeptest/blob/main/releases/v0.0.3/deeptest-cli-0.0.3.tar.gz"
     sha256 "397323a4ee2f6c90734f2b2a61b9fdf602dcea85ee9d11128a6cbbc2038353a0"
     license "Proprietary"
   
