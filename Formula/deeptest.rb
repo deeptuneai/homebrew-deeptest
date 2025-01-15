@@ -1,4 +1,4 @@
-class DeeptestCli < Formula
+class Deeptest < Formula
     include Language::Python::Virtualenv
   
     desc "Shiny new formula"
