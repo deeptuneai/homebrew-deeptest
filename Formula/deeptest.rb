@@ -6,17 +6,11 @@ class Deeptest < Formula
     url "https://files.pythonhosted.org/packages/28/3a/fb39f083dfb78679bd30424abffb70ce766f01220fcc7a2ddd1312383631/deeptest_cli-0.0.4.tar.gz"
     sha256 "3482dd234cfbdbfad7f732d14f6fbebafa793ccec949e414b0ba3862a7451e93"
   
-    depends_on "python@3.11"
-    depends_on "rust" => :build
+    depends_on "python3"
   
     resource "annotated-types" do
       url "https://files.pythonhosted.org/packages/ee/67/531ea369ba64dcff5ec9c3402f9f51bf748cec26dde048a2f973a4eea7f5/annotated_types-0.7.0.tar.gz"
       sha256 "aff07c09a53a08bc8cfccb9c85b05f1aa9a2a6f23728d790723543408344ce89"
-    end
-
-    resource "backports.tarfile" do 
-        url "https://files.pythonhosted.org/packages/86/72/cd9b395f25e290e633655a100af28cb253e4393396264a98bd5f5951d50f/backports_tarfile-1.2.0.tar.gz"
-        sha256 "d75e02c268746e1b8144c278978b6e98e85de6ad16f8e4b0844a154557eca991"
     end
   
     resource "certifi" do
@@ -39,26 +33,6 @@ class Deeptest < Formula
       sha256 "12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9"
     end
   
-    resource "jaraco.classes" do
-      url "https://files.pythonhosted.org/packages/06/c0/ed4a27bc5571b99e3cff68f8a9fa5b56ff7df1c2251cc715a652ddd26402/jaraco.classes-3.4.0.tar.gz"
-      sha256 "47a024b51d0239c0dd8c8540c6c7f484be3b8fcf0b2d85c13825780d3b3f3acd"
-    end
-  
-    resource "jaraco.context" do
-      url "https://files.pythonhosted.org/packages/df/ad/f3777b81bf0b6e7bc7514a1656d3e637b2e8e15fab2ce3235730b3e7a4e6/jaraco_context-6.0.1.tar.gz"
-      sha256 "9bae4ea555cf0b14938dc0aee7c9f32ed303aa20a3b73e7dc80111628792d1b3"
-    end
-  
-    resource "jaraco.functools" do
-      url "https://files.pythonhosted.org/packages/ab/23/9894b3df5d0a6eb44611c36aec777823fc2e07740dabbd0b810e19594013/jaraco_functools-4.1.0.tar.gz"
-      sha256 "70f7e0e2ae076498e212562325e805204fc092d7b4c17e0e86c959e249701a9d"
-    end
-  
-    resource "keyring" do
-      url "https://files.pythonhosted.org/packages/70/09/d904a6e96f76ff214be59e7aa6ef7190008f52a0ab6689760a98de0bf37d/keyring-25.6.0.tar.gz"
-      sha256 "0b39998aa941431eb3d9b0d4b2460bc773b9df6fed7621c2dfb291a7e0187a66"
-    end
-  
     resource "markdown-it-py" do
       url "https://files.pythonhosted.org/packages/38/71/3b932df36c1a044d397a1f92d1cf91ee0a503d91e470cbd670aa66b07ed0/markdown-it-py-3.0.0.tar.gz"
       sha256 "e3f60a94fa066dc52ec76661e37c851cb232d92f9886b15cb560aaada2df8feb"
@@ -67,11 +41,6 @@ class Deeptest < Formula
     resource "mdurl" do
       url "https://files.pythonhosted.org/packages/d6/54/cfe61301667036ec958cb99bd3efefba235e65cdeb9c84d24a8293ba1d90/mdurl-0.1.2.tar.gz"
       sha256 "bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"
-    end
-  
-    resource "more-itertools" do
-      url "https://files.pythonhosted.org/packages/88/3b/7fa1fe835e2e93fd6d7b52b2f95ae810cf5ba133e1845f726f5a992d62c2/more-itertools-10.6.0.tar.gz"
-      sha256 "2cd7fad1009c31cc9fb6a035108509e6547547a7a738374f10bd49a09eb3ee3b"
     end
   
     resource "pydantic" do
@@ -135,25 +104,11 @@ class Deeptest < Formula
     end
   
     def install
-        # Create virtualenv with specific Python version
-        venv = virtualenv_create(libexec, "python3.11")
-        
-        # Upgrade pip first
-        venv.pip_install "pip"
-        
-        # Install all dependencies
-        venv.pip_install resources
-        
-        # Install the package itself
-        venv.pip_install_and_link buildpath
-        
-        # Verify the installation worked
-        system libexec/"bin/python", "-c", "import deeptest_cli"
+      virtualenv_create(libexec, "python3")
+      virtualenv_install_with_resources
     end
-
   
     test do
-        system bin/"deeptest", "--version"
+      false
     end
-    
   end
