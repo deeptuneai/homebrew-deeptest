@@ -3,10 +3,10 @@ class Deeptest < Formula
   
     desc "Automated testing with deeptest!"
     homepage "app.deeptest.sh"
-    url "https://files.pythonhosted.org/packages/28/3a/fb39f083dfb78679bd30424abffb70ce766f01220fcc7a2ddd1312383631/deeptest_cli-0.0.4.tar.gz"
-    sha256 "3482dd234cfbdbfad7f732d14f6fbebafa793ccec949e414b0ba3862a7451e93"
+    url "https://files.pythonhosted.org/packages/4a/de/eaf6530df182f34b8b0f4ec3ffaf35932d0c8ff65b56759266f8db49902b/deeptest_cli-0.0.5.tar.gz"
+    sha256 "57e07d8dbebf5a212b15268b27beabd1c3501a87e3306c989bc32456a6b2ac39"
   
-    depends_on "python@3.11"
+    depends_on "python3"
     depends_on "rust" => :build
   
     resource "annotated-types" do
